@@ -1,0 +1,55 @@
+{
+  "name": "revo-lsp",
+  "displayName": "revo-lsp",
+  "description": "Revo LSP",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.125.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "languages": [
+      {
+        "id": "revo",
+        "aliases": [
+          "Revo",
+          "revo"
+        ],
+        "extensions": [
+          ".rv",
+          ".revo"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "revo",
+        "scopeName": "source.revo",
+        "path": "./syntaxes/revo.tmLanguage.json"
+      }
+    ],
+    "configuration": {
+      "title": "Revo",
+      "properties": {
+        "revo.lsp.path": {
+          "type": "string",
+          "default": "revo",
+          "description": "Path to the Revo language server binary"
+        }
+      }
+    }
+  },
+  "dependencies": {
+    "vscode-languageclient": "^10.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^26.1.2",
+    "@types/vscode": "^1.125.0",
+    "@vscode/vsce": "^3.9.2",
+    "typescript": "^7.0.2"
+  },
+  "main": "./out/extension.js"
+}

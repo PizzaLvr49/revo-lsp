@@ -1,0 +1,19 @@
+"hello!!"
+  |> string.upper()
+  |> string.sub(0, 4)
+  |> fn(s) s ~ ", world!" 
+  |> inspect
+
+# or with placeholders,
+"hello!!"
+  |> _:upper() # obj:method() == obj.method(obj)
+  |> _:sub(0, 4)
+  |> do
+    # you can even put any expression here
+    #   even do-end blocks
+    _ ~ ", world!"
+  end
+  |> print
+
+# and the infix version of this
+print("hello":upper():sub(0, 4) ~ ", world!")
