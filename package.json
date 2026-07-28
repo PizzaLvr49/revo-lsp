@@ -3,8 +3,20 @@
   "displayName": "revo-lsp",
   "description": "Revo LSP",
   "version": "0.0.1",
+  "publisher": "PizzaLvr49",
   "repository": {
-    "url": "https://github.com/PizzaLvr49/revo-lsp"
+    "url": "https://github.com/PizzaLvr49/revo-lsp",
+    "type": "git"
+  },
+  "icon": "rv.png",
+  "scripts": {
+    "vscode:prepublish": "tsc -p ./",
+    "compile": "tsc -p ./"
+  },
+  "license": "MIT",
+  "galleryBanner": {
+    "color": "#1e1e1e",
+    "theme": "dark"
   },
   "engines": {
     "vscode": "^1.125.0"
