@@ -2,30 +2,94 @@
 	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
 	"name": "Revo",
 	"patterns": [
-		{
-			"include": "#keywords"
-		},
-		{
-			"include": "#strings"
-		}
+		{ "include": "#comments" },
+		{ "include": "#strings" },
+		{ "include": "#atoms" },
+		{ "include": "#numbers" },
+		{ "include": "#keywords" },
+		{ "include": "#builtins" },
+		{ "include": "#operators" },
+		{ "include": "#brackets" },
+		{ "include": "#separators" }
 	],
 	"repository": {
-		"keywords": {
-			"patterns": [{
-				"name": "keyword.control.revo",
-				"match": "\\b(if|while|for|return)\\b"
-			}]
-		},
-		"strings": {
-			"name": "string.quoted.double.revo",
-			"begin": "\"",
-			"end": "\"",
+		"comments": {
 			"patterns": [
 				{
-					"name": "constant.character.escape.revo",
-					"match": "\\\\."
+					"name": "comment.block.revo",
+					"begin": "##",
+					"end": "##"
+				},
+				{
+					"name": "comment.line.number-sign.revo",
+					"begin": "#",
+					"end": "$"
 				}
 			]
+		},
+		"strings": {
+			"patterns": [
+				{
+					"name": "string.quoted.triple.revo",
+					"begin": "\"\"\"",
+					"end": "\"\"\""
+				},
+				{
+					"name": "string.quoted.double.revo",
+					"begin": "\"",
+					"end": "\"",
+					"patterns": [
+						{
+							"name": "constant.character.escape.revo",
+							"match": "\\\\."
+						}
+					]
+				},
+				{
+					"name": "string.quoted.single.revo",
+					"begin": "'",
+					"end": "'",
+					"patterns": [
+						{
+							"name": "constant.character.escape.revo",
+							"match": "\\\\."
+						}
+					]
+				},
+				{
+					"name": "string.quoted.other.backtick.revo",
+					"begin": "`",
+					"end": "`"
+				}
+			]
+		},
+		"atoms": {
+			"name": "constant.other.symbol.revo",
+			"match": ":[a-zA-Z_]\\w*[?!]?"
+		},
+		"numbers": {
+			"name": "constant.numeric.revo",
+			"match": "\\b\\d+(\\.\\d+)?([eE][+-]?\\d+)?\\b"
+		},
+		"keywords": {
+			"name": "keyword.control.revo",
+			"match": "\\b(let|fn|const|global|if|else|match|when|do|end|for|in|while|loop|break|continue|return|spawn|join|yield|sleep|test|suite|expect|skip|struct|macro|import|proc|pub|comp|and|or|not|orelse)\\b"
+		},
+		"builtins": {
+			"name": "support.function.builtin.revo",
+			"match": "\\b[a-zA-Z_]\\w*[?!]"
+		},
+		"operators": {
+			"name": "keyword.operator.revo",
+			"match": "\\|>|\\.\\.|=>|->|[+\\-*/%=!<>&|^~?]+"
+		},
+		"brackets": {
+			"name": "punctuation.section.brackets.revo",
+			"match": "[()\\[\\]{}]"
+		},
+		"separators": {
+			"name": "punctuation.separator.comma.revo",
+			"match": ","
 		}
 	},
 	"scopeName": "source.revo"
